@@ -1,46 +1,64 @@
-<div class="add-form-container">
+<form class="add-form-container"  [formGroup]="newCarForm" (ngSubmit)="onSubmit()">
   <div class="name-horsePower-block">
-    <mat-form-field>
-      <input matInput placeholder="Name">
+    <mat-form-field color="warn">
+      <input matInput placeholder="Name" formControlName="name">
     </mat-form-field>
 
-    <mat-form-field>
-      <input matInput placeholder="Horse Power">
+    <mat-form-field color="warn">
+      <input matInput placeholder="Horse Power" formControlName="horsePower">
+      <span matSuffix>Pk</span>
     </mat-form-field>
   </div>
 
   <div class="brand-fuel-block">
-    <mat-form-field>
-      <mat-select placeholder="Brand">
-        <mat-option value="option">Option</mat-option>
+    <mat-form-field color="warn">
+      <mat-select placeholder="Brand" formControlName="brand">
+        <mat-option value=""></mat-option>
+        <mat-option value="renault">Renault</mat-option>
+        <mat-option value="dacia">Dacia</mat-option>
+        <mat-option value="alpine">Alpine</mat-option>
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field>
-      <mat-select placeholder="Fuel type">
-        <mat-option value="option">Option</mat-option>
+    <mat-form-field color="warn">
+      <mat-select placeholder="Fuel type" formControlName="fuelType">
+        <mat-option value=""></mat-option>
+        <mat-option value="gasoline">Gasoline</mat-option>
+        <mat-option value="diesel">Diesel</mat-option>
+        <mat-option value="lpg">LPG</mat-option>
+        <mat-option value="electric">Electric</mat-option>
       </mat-select>
-    </mat-form-field>
+    </mat-form-field >
   </div>
 
   <div class="price-datepick-block">
     <div class="price-subBlock">
-      <mat-form-field>
-        <input matInput placeholder="Price">
+      <mat-form-field color="warn">
+        <input matInput placeholder="Price" formControlName="price">
+        <mat-icon matSuffix>euro</mat-icon>
       </mat-form-field>
     </div>
     <div class=datepickers-subBlock>
-      <mat-form-field class="sales">
-        <input matInput [matDatepicker]="startOfSales" placeholder="Start of Sales" [min]="minDate" [max]="maxDate">
+      <mat-form-field color="warn" class="sales">
+        <input matInput [matDatepicker]="startOfSales" placeholder="Start of Sales" [min]="minDate" [max]="maxDate" formControlName="startOfSales">
         <mat-datepicker-toggle [for]="startOfSales" matSuffix></mat-datepicker-toggle>
         <mat-datepicker #startOfSales></mat-datepicker>
       </mat-form-field>
 
-      <mat-form-field class="sales">
-          <input matInput [matDatepicker]="endOfSales" placeholder="End of Sales" [min]="minDate" [max]="maxDate">
+      <mat-form-field color="warn" class="sales">
+          <input matInput [matDatepicker]="endOfSales" placeholder="End of Sales" [min]="minDate" [max]="maxDate" formControlName="endOfSales">
           <mat-datepicker-toggle [for]="endOfSales" matSuffix></mat-datepicker-toggle>
           <mat-datepicker #endOfSales></mat-datepicker>
         </mat-form-field>
     </div>
   </div>
+  <div class="btn-block">
+    <button  class="btn-valider"
+                type="submit"
+                mat-raised-button
+                [disabled]="newCarForm.invalid"
+                [ngStyle]="{ 'background-color' : newCarForm.invalid ?  'grey' : '#f4c812'}">
+                ADD NEW CAR
+    </button>
 </div>
+</form>

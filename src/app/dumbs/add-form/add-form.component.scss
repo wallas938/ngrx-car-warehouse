@@ -1,11 +1,11 @@
 .add-form-container {
   display: flex;
   flex-direction: column;
-  width: 95%;
+  width: 80%;
   margin: 20% auto;
 
   mat-form-field, .datepickers-subBlock {
-    width: 380px;
+    width: 500px;
   }
 
   .datepickers-subBlock {
@@ -14,7 +14,7 @@
     justify-content: space-between;
 
     .sales {
-      width: 170px;
+      width: 200px;
     }
   }
 
@@ -22,6 +22,17 @@
   .price-datepick-block {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
+    padding: 0 50px;
+  }
+
+  .btn-block {
+    text-align: center;
+    padding: 50px 0;
+    .btn-valider {
+      width: 150px;
+    }
   }
 }
+
+

@@ -1,0 +1,68 @@
+<main>
+    <div>
+        <a class="addCar" routerLink="/cars/new" mat-raised-button>+ Add Car</a>
+    </div>
+    <mat-table  [dataSource]="cars" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> NAME </mat-header-cell>
+        <mat-cell *matCellDef="let car"> {{car.name}} </mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="brand">
+        <mat-header-cell  *matHeaderCellDef> BRAND </mat-header-cell>
+        <mat-cell *matCellDef="let car"> {{car.brand}} </mat-cell>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="fuelType">
+        <mat-header-cell mat-header-cell *matHeaderCellDef> FUEL TYPE </mat-header-cell>
+        <mat-cell *matCellDef="let car"> {{car.fuelType}} </mat-cell>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="horsePower">
+        <mat-header-cell *matHeaderCellDef> HORSE POWER </mat-header-cell>
+        <mat-cell *matCellDef="let car"> {{car.horsePower}} </mat-cell>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="price">
+        <mat-header-cell *matHeaderCellDef> PRICE </mat-header-cell>
+        <mat-cell *matCellDef="let car">
+          <mat-icon id="currency">euro_symbol</mat-icon>
+          {{car.price}}
+        </mat-cell>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="startOfSales">
+        <mat-header-cell *matHeaderCellDef> START OD SALES </mat-header-cell>
+        <mat-cell *matCellDef="let car"> {{car.startOfSales}} </mat-cell>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="endOfSales">
+        <mat-header-cell *matHeaderCellDef> END OF SALES </mat-header-cell>
+        <mat-cell *matCellDef="let car"> {{car.endOfSales}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="actions" *matCellDef="let car">
+            <mat-icon id="edit">edit</mat-icon>
+            <mat-icon id="del">delete_sweep</mat-icon>
+        </mat-cell>
+      </ng-container>
+
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</main>
+

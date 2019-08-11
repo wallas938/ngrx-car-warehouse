@@ -1,0 +1,51 @@
+main {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin: 10% auto;
+
+
+  a.addCar {
+    background-color: #f4c812;
+  }
+
+  mat-table {
+    margin-top: 25px;
+    justify-content: space-around;
+
+    mat-header-cell {
+      background-color: #f4c812;
+      color: black;
+      font-weight: bolder;
+    }
+
+    mat-cell {
+      font-weight: 500;
+    }
+
+    #currency{
+      font-size: 1rem;
+      margin-top: 8px;
+    }
+
+    .actions {
+      display: inline-block;
+
+      #edit, #del {
+        margin: 10px 15px;
+        cursor: pointer;
+      }
+      #del:hover {
+        color: #d0021b;
+      }
+
+      #edit:hover {
+        color: #4a90e2;
+      }
+    }
+
+  }
+
+}
+
+

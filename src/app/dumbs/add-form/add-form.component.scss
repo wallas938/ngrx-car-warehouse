@@ -1,0 +1,27 @@
+.add-form-container {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin: 20% auto;
+
+  mat-form-field, .datepickers-subBlock {
+    width: 380px;
+  }
+
+  .datepickers-subBlock {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .sales {
+      width: 170px;
+    }
+  }
+
+  .name-horsePower-block, .brand-fuel-block,
+  .price-datepick-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

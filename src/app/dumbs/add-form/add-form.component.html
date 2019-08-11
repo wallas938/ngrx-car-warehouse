@@ -1,0 +1,46 @@
+<div class="add-form-container">
+  <div class="name-horsePower-block">
+    <mat-form-field>
+      <input matInput placeholder="Name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Horse Power">
+    </mat-form-field>
+  </div>
+
+  <div class="brand-fuel-block">
+    <mat-form-field>
+      <mat-select placeholder="Brand">
+        <mat-option value="option">Option</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Fuel type">
+        <mat-option value="option">Option</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="price-datepick-block">
+    <div class="price-subBlock">
+      <mat-form-field>
+        <input matInput placeholder="Price">
+      </mat-form-field>
+    </div>
+    <div class=datepickers-subBlock>
+      <mat-form-field class="sales">
+        <input matInput [matDatepicker]="startOfSales" placeholder="Start of Sales" [min]="minDate" [max]="maxDate">
+        <mat-datepicker-toggle [for]="startOfSales" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #startOfSales></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="sales">
+          <input matInput [matDatepicker]="endOfSales" placeholder="End of Sales" [min]="minDate" [max]="maxDate">
+          <mat-datepicker-toggle [for]="endOfSales" matSuffix></mat-datepicker-toggle>
+          <mat-datepicker #endOfSales></mat-datepicker>
+        </mat-form-field>
+    </div>
+  </div>
+</div>

@@ -15,4 +15,10 @@ export class CarService {
   getCars(): Observable<Car[]> {
     return this.http.get<Car[]>(this.baseUrl)
   }
+
+  addCar(car: any): Observable<Car>  {
+    return this.http.post<Car>(this.baseUrl, car.car).pipe(
+      map((car) => car)
+    )
+  }
 }

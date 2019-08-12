@@ -19,7 +19,7 @@ export function reducer(
 ): State {
   switch (action.type) {
     case fromCarActions.ActionTypes.LoadCars:
-      console.log('LOAD')
+      //console.log('LOAD')
       return {
         ...state,
         carsLoading: true,
@@ -33,6 +33,31 @@ export function reducer(
         list: action.cars,
         carsLoading: false,
         isCarsLoaded: true
+      };
+
+      case fromCarActions.ActionTypes.LoadCarsFailed:
+        //console.log('LOADED: ', action)
+      return {
+        ...state,
+        carsLoading: false,
+        isCarsLoaded: false
+      };
+      case fromCarActions.ActionTypes.AddCars:
+      //console.log('CAR ADDING')
+      return {
+        ...state,
+      };
+
+    case fromCarActions.ActionTypes.AddCarsSuccess:
+      console.log('CAR ADDED: ')
+      return {
+        ...state,
+      };
+
+      case fromCarActions.ActionTypes.AddCarsFailed:
+        console.log('ADDING CAR FAILED: ', action)
+      return {
+        ...state,
       };
 
     default:

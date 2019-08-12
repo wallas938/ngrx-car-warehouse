@@ -1,3 +1,4 @@
+import { AddCarEffects } from './store/effects/addCar.effects';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,7 +18,7 @@ import { CarEffects } from '@core/store/effects/car.effects';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryCarService),
     StoreModule.forRoot(fromCore.reducers, { runtimeChecks: { strictStateImmutability: true, strictActionImmutability: true }}),
-    EffectsModule.forRoot([CarEffects]),
+    EffectsModule.forRoot([CarEffects, AddCarEffects]),
     StoreDevtoolsModule.instrument({
       name: 'Simplon Exercise',
       maxAge: 50

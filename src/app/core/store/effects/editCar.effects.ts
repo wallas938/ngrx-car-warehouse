@@ -1,4 +1,3 @@
-import { AddCar } from './../actions/car.actions';
 import { Action } from '@ngrx/store';
 import { Car } from '@core/models/car';
 import { Injectable } from '@angular/core';
@@ -11,11 +10,11 @@ import { of } from 'rxjs';
 export class AddCarEffects {
 
   @Effect({ dispatch: true })
-  AddCar$ = this.actions$
+  EditCar$ = this.actions$
     .pipe(
-      ofType(fromCarActions.ActionTypes.AddCar),
-      switchMap((car) =>  this.carService.addCar(car)),
-      map((car => new fromCarActions.AddCarSuccess(car)))
+      ofType(fromCarActions.ActionTypes.EditCar),
+      switchMap((data) =>  this.carService.editCar(data)),
+      map((car => new fromCarActions.EditCarSuccess(car)))
     );
 
   constructor(

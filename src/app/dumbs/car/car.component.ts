@@ -1,5 +1,5 @@
 import { Car } from './../../core/models/car';
-import { Component, OnInit, ChangeDetectionStrategy, Input, Sanitizer } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, Sanitizer, Output, EventEmitter } from '@angular/core';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -12,6 +12,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class CarComponent implements OnInit {
 
   @Input() cars: any[]
+  @Output() displayEditForm = new  EventEmitter()
 
   displayedColumns: string[] = ['name', 'brand', 'fuelType', 'horsePower', 'price', 'startOfSales', 'endOfSales', 'actions'];
   constructor(private matIcon: MatIconRegistry,
@@ -24,6 +25,10 @@ export class CarComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  displayFormEditer(id: number, car: Car) {
+    this.displayEditForm.emit({id, car})
   }
 
 }

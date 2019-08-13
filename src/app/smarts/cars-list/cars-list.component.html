@@ -1,9 +1,8 @@
-<div>
-  <div *ngIf="isCarsLoaded$; else loading" class="car-list">
-    <car [cars]="cars$"></car>
+<div class="car-list-container">
+  <div class="car-list">
+    <car (displayEditForm)="showEditForm($event)" [cars]="cars$"></car>
   </div>
 
-  <ng-template #loading>
-    ...loading
-  </ng-template>
+  <edit-car *ngIf="!oneCarEditing$">
+  </edit-car>
 </div>

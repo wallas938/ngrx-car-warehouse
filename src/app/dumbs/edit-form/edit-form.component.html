@@ -1,1 +1,59 @@
-<p>edit-form works!</p>
+<form id="edit-form-container"  [formGroup]="newCarForm" (ngSubmit)="onSubmit()">
+    <mat-form-field color="warn">
+      <input matInput placeholder="Name" formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field color="warn">
+      <input matInput placeholder="Horse Power" formControlName="horsePower">
+      <span matSuffix>Pk</span>
+    </mat-form-field>
+    <mat-form-field color="warn">
+      <mat-select placeholder="Brand" formControlName="brand">
+        <mat-option value=""></mat-option>
+        <mat-option value="Renault">Renault</mat-option>
+        <mat-option value="Dacia">Dacia</mat-option>
+        <mat-option value="Alpine">Alpine</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field color="warn">
+      <mat-select placeholder="Fuel type" formControlName="fuelType">
+        <mat-option value=""></mat-option>
+        <mat-option value="Gasoline">Gasoline</mat-option>
+        <mat-option value="Diesel">Diesel</mat-option>
+        <mat-option value="LPG">LPG</mat-option>
+        <mat-option value="Electric">Electric</mat-option>
+      </mat-select>
+    </mat-form-field >
+      <mat-form-field color="warn">
+        <input matInput placeholder="Price" formControlName="price">
+        <mat-icon matSuffix>euro</mat-icon>
+      </mat-form-field>
+      <mat-form-field color="warn" class="sales">
+        <input matInput [matDatepicker]="startOfSales" placeholder="Start of Sales" [min]="minDate" [max]="maxDate" formControlName="startOfSales">
+        <mat-datepicker-toggle [for]="startOfSales" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #startOfSales></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field color="warn" class="sales">
+          <input matInput [matDatepicker]="endOfSales" placeholder="End of Sales" [min]="minDate" [max]="maxDate" formControlName="endOfSales">
+          <mat-datepicker-toggle [for]="endOfSales" matSuffix></mat-datepicker-toggle>
+          <mat-datepicker #endOfSales></mat-datepicker>
+        </mat-form-field>
+  <div id="edit-btns-block">
+    <button  class="btn-valider"
+                type="submit"
+                mat-raised-button
+                [disabled]="newCarForm.invalid"
+                [ngStyle]="{ 'background-color' : newCarForm.invalid ?  'grey' : '#f4c812'}">
+                EDIT CAR
+    </button>
+    <button  class="btn-cancel"
+                (click)="onCancel()"
+                mat-raised-button
+                [disabled]="newCarForm.invalid"
+                [ngStyle]="{ 'background-color' : '#d0021b', 'color': 'white'}">
+                CANCEL
+    </button>
+</div>
+</form>

@@ -1,0 +1,10 @@
+#edit-form-container {
+  display: flex;
+  justify-content: space-evenly;
+  height: 100px;
+  #edit-btns-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}

@@ -1,5 +1,5 @@
 import { Car } from '@core/models/car';
-import { AddCars } from './../../core/store/actions/car.actions';
+import { AddCar } from './../../core/store/actions/car.actions';
 import { State } from './../../core/store/index';
 import { Store } from '@ngrx/store';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
@@ -19,7 +19,7 @@ export class NewCarComponent implements OnInit {
   }
 
   addCarHandler(data: Car) {
-    this.store.dispatch(new AddCars(data))
+    this.store.dispatch(new AddCar(data))
     this.router.navigate(['/cars/overview'])
   }
 

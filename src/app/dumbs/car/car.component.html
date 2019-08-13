@@ -42,7 +42,7 @@
 
       <!-- Symbol Column -->
       <ng-container matColumnDef="startOfSales">
-        <mat-header-cell *matHeaderCellDef> START OD SALES </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> START OF SALES </mat-header-cell>
         <mat-cell *matCellDef="let car"> {{car.startOfSales}} </mat-cell>
       </ng-container>
 
@@ -55,8 +55,12 @@
       <ng-container matColumnDef="actions">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell class="actions" *matCellDef="let car">
-            <mat-icon id="edit">edit</mat-icon>
-            <mat-icon id="del">delete_sweep</mat-icon>
+              <mat-icon id="edit" (click)="displayFormEditer(car.id, car)">
+                edit
+              </mat-icon>
+                <mat-icon id="del">
+                  delete_sweep
+                </mat-icon>
         </mat-cell>
       </ng-container>
 
@@ -65,4 +69,6 @@
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 </main>
+
+
 

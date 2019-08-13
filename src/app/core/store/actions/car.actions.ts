@@ -5,9 +5,12 @@ export enum ActionTypes {
   LoadCars = '[Cars] Get cars from API',
   LoadCarsSuccess = '[Cars] Get cars from API Success',
   LoadCarsFailed = '[Cars] Get cars from API Failed',
-  AddCars = '[Cars] Add a new car',
-  AddCarsSuccess = '[Cars] Add a new car Success',
-  AddCarsFailed = '[Cars] Add a new car Failed',
+  AddCar = '[Cars] Add a new car',
+  AddCarSuccess = '[Cars] Add a new car Success',
+  AddCarFailed = '[Cars] Add a new car Failed',
+  EditCar = '[Cars] Edit one car',
+  EditCarSuccess = '[Cars] Edit one car Success',
+  EditCarFailed = '[Cars] Edit one car Failed',
 }
 
 export class LoadCars implements Action {
@@ -26,19 +29,36 @@ export class LoadCarsFailed implements Action {
   constructor(public error: any) {}
 }
 
-export class AddCars implements Action {
-  readonly type = ActionTypes.AddCars;
+export class AddCar implements Action {
+  readonly type = ActionTypes.AddCar;
   constructor(public car: Car) {}
 }
 
-export class AddCarsSuccess implements Action {
-  readonly type = ActionTypes.AddCarsSuccess;
+export class AddCarSuccess implements Action {
+  readonly type = ActionTypes.AddCarSuccess;
 
   constructor(public car: Car) {}
 }
 
-export class AddCarsFailed implements Action {
-  readonly type = ActionTypes.AddCarsFailed;
+export class AddCarFailed implements Action {
+  readonly type = ActionTypes.AddCarFailed;
+
+  constructor(public error: any) {}
+}
+
+export class EditCar implements Action {
+  readonly type = ActionTypes.EditCar;
+  constructor(public data: any) {}
+}
+
+export class EditCarSuccess implements Action {
+  readonly type = ActionTypes.EditCarSuccess;
+
+  constructor(public car: Car) {}
+}
+
+export class EditCarFailed implements Action {
+  readonly type = ActionTypes.EditCarFailed;
 
   constructor(public error: any) {}
 }
@@ -49,6 +69,9 @@ export type Actions =
   | LoadCars
   | LoadCarsSuccess
   | LoadCarsFailed
-  | AddCars
-  | AddCarsSuccess
-  | AddCarsFailed;
+  | AddCar
+  | AddCarSuccess
+  | AddCarFailed
+  | EditCar
+  | EditCarSuccess
+  | EditCarFailed;

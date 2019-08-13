@@ -15,11 +15,11 @@ export class AddFormComponent implements OnInit {
   @Output() onAdd = new EventEmitter<any>()
 
   newCarForm = new FormGroup({
-    name: new FormControl('Kango', Validators.required),
-    horsePower: new FormControl('75', Validators.required),
-    brand: new FormControl('Citroen', Validators.required),
+    name: new FormControl('', Validators.required),
+    horsePower: new FormControl('', Validators.required),
+    brand: new FormControl('', Validators.required),
     fuelType: new FormControl('', Validators.required),
-    price: new FormControl('10000', Validators.required),
+    price: new FormControl('', Validators.required),
     startOfSales: new FormControl('', Validators.required),
     endOfSales: new FormControl('', Validators.required),
   })

@@ -21,4 +21,8 @@ export class CarService {
       map((car) => car)
     )
   }
+
+  editCar(data: any): Observable<Car>  {
+    return this.http.put<Car>(this.baseUrl+data.id, data.car)
+  }
 }

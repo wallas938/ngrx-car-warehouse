@@ -11,24 +11,19 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class CarComponent implements OnInit {
 
-  @Input() cars: any[]
-  @Output() displayEditForm = new  EventEmitter()
+  @Input() cars: Car[]
+  @Output() displayCarEditor = new  EventEmitter()
+  @Output() removeCarEditor = new  EventEmitter()
 
   displayedColumns: string[] = ['name', 'brand', 'fuelType', 'horsePower', 'price', 'startOfSales', 'endOfSales', 'actions'];
-  constructor(private matIcon: MatIconRegistry,
-              private sanitizer: DomSanitizer) {
-                this.matIcon.addSvgIcon(
-                  'pencil',
-                  this.sanitizer.bypassSecurityTrustResourceUrl('/assets/pencil.svg')
-                )
-              }
+  constructor() {}
 
   ngOnInit() {
-
+    //console.log('FORM EDIT SHOWED: ', this.oneCarEditing)
   }
 
-  displayFormEditer(id: number, car: Car) {
-    this.displayEditForm.emit({id, car})
+  onDisplayCarEditor(car: Car) {
+      this.displayCarEditor.emit(car)
   }
 
 }

@@ -9,7 +9,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import * as fromCore from '@core/store';
-import { CarEffects } from '@core/store/effects/car.effects';
+import * as fromEffects from './store/effects/index'
 
 @NgModule({
   declarations: [],
@@ -17,8 +17,8 @@ import { CarEffects } from '@core/store/effects/car.effects';
     SharedModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryCarService),
-    StoreModule.forRoot(fromCore.reducers, { runtimeChecks: { strictStateImmutability: true, strictActionImmutability: true }}),
-    EffectsModule.forRoot([CarEffects, AddCarEffects]),
+    StoreModule.forFeature("GlobalCarState", fromCore.reducers),
+    EffectsModule.forRoot([fromEffects.addCarEffects, fromEffects.carEffects, fromEffects.editCarEffects]),
     StoreDevtoolsModule.instrument({
       name: 'Simplon Exercise',
       maxAge: 50

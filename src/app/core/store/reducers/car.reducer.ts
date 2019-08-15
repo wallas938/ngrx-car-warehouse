@@ -1,29 +1,31 @@
 import { Car } from "@core/models/car";
 import * as fromCarActions from "@core/store/actions/car.actions";
 
-export interface State {
+export interface CarState {
   list: Car[];
+  currentEditedCar: Car;
   carsLoading: boolean;
   isCarsLoaded: boolean;
-  carEdditing: boolean;
-  carEddited: boolean
+  carEditing: boolean;
+  carEdited: boolean
 }
 
-export const initialState: State = {
+export const initialState: CarState = {
   list: [],
+  currentEditedCar: undefined,
   carsLoading: false,
   isCarsLoaded: false,
-  carEdditing: false,
-  carEddited: false
+  carEditing: false,
+  carEdited: false
 };
 
 export function reducer(
   state = initialState,
   action: fromCarActions.Actions
-): State {
+): CarState {
   switch (action.type) {
     case fromCarActions.ActionTypes.LoadCars:
-      //console.log('LOAD')
+      console.log('LOAD')
       return {
         ...state,
         carsLoading: true,
@@ -40,14 +42,14 @@ export function reducer(
       };
 
       case fromCarActions.ActionTypes.LoadCarsFailed:
-        //console.log('LOADED: ', action)
+        //console.log('LOOADING FAILED: ', action)
       return {
         ...state,
         carsLoading: false,
         isCarsLoaded: false
       };
       case fromCarActions.ActionTypes.AddCar:
-      //console.log('CAR ADDING')
+      console.log('CAR ADDING')
       return {
         ...state,
       };
@@ -59,31 +61,59 @@ export function reducer(
       };
 
       case fromCarActions.ActionTypes.AddCarFailed:
-        console.log('ADDING CAR FAILED: ', action)
+        //console.log('ADDING CAR FAILED: ', action)
       return {
         ...state,
       };
-      case fromCarActions.ActionTypes.EditCar:
-      console.log('EDITING CAR')
+
+      case fromCarActions.ActionTypes.DisplayCarEditor:
+      //console.log('CAR EDITOR SHOWED WITH OLD DATAS', action.car)
       return {
         ...state,
-        carEdditing: true,
-        carEddited: false
+        currentEditedCar: action.car,
+        carEditing: true,
+        carEdited: false
+      };
+
+      case fromCarActions.ActionTypes.RemoveCarEditor:
+      console.log('CAR EDITOR REMOVED ')
+      return {
+        ...state,
+        carEditing: false,
+      };
+
+      case fromCarActions.ActionTypes.EditCar:
+      console.log('NEW DATAS SENT', action)
+      return {
+        ...state,
+        carEditing: false,
+        carEdited: false
       };
 
     case fromCarActions.ActionTypes.EditCarSuccess:
-      console.log('CAR EDITED: ')
+      console.log('CAR EDITED !', action)
       return {
         ...state,
+        carEditing: false,
+        carEdited: true
       };
 
       case fromCarActions.ActionTypes.EditCarFailed:
-        console.log('EDITING CAR FAILED: ', action)
+        console.log('EDITING CAR FAILED: ', action.error)
       return {
         ...state,
+        carEditing: false,
+        carEdited: false
       };
 
     default:
       return initialState;
   }
 }
+
+export const getCarsList = (state: CarState) => state.list
+export const getCurrentCarEdited = (state: CarState) => state.currentEditedCar
+export const getCarsLoading = (state: CarState) => state.carsLoading
+export const getCarsLoaded = (state: CarState) => state.isCarsLoaded
+export const getCarEditing = (state: CarState) => state.carEditing
+export const getCarEdited = (state: CarState) => state.carEdited

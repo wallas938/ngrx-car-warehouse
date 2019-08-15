@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { State } from '@core/store';
+import { GlobalCarState } from '@core/store';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,7 +9,7 @@ import { State } from '@core/store';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private readonly store: Store<State>) {}
+  constructor(private readonly store: Store<GlobalCarState>) {}
 
   ngOnInit(): void {
   }

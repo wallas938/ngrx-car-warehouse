@@ -11,6 +11,9 @@ export enum ActionTypes {
   EditCar = '[Cars] Edit one car',
   EditCarSuccess = '[Cars] Edit one car Success',
   EditCarFailed = '[Cars] Edit one car Failed',
+  DisplayCarEditor = '[Cars] Display form Editor',
+  CarEditorDisplayed = '[Cars] Form Editor Displayed',
+  RemoveCarEditor = '[Cars] Form Editor Removed',
 }
 
 export class LoadCars implements Action {
@@ -43,24 +46,42 @@ export class AddCarSuccess implements Action {
 export class AddCarFailed implements Action {
   readonly type = ActionTypes.AddCarFailed;
 
-  constructor(public error: any) {}
+  constructor(public error: string) {}
 }
 
 export class EditCar implements Action {
   readonly type = ActionTypes.EditCar;
-  constructor(public data: any) {}
+  constructor(public car: Car) {} // new datas
 }
 
 export class EditCarSuccess implements Action {
   readonly type = ActionTypes.EditCarSuccess;
 
-  constructor(public car: Car) {}
+  constructor() {}
 }
 
 export class EditCarFailed implements Action {
   readonly type = ActionTypes.EditCarFailed;
 
-  constructor(public error: any) {}
+  constructor(public error: string) {}
+}
+
+export class DisplayCarEditor implements Action {
+  readonly type = ActionTypes.DisplayCarEditor;
+
+  constructor(public car: Car) {} //old datas
+}
+
+export class CarEditorDisplayed implements Action {
+  readonly type = ActionTypes.CarEditorDisplayed;
+
+  constructor() {}
+}
+
+export class RemoveCarEditor implements Action {
+  readonly type = ActionTypes.RemoveCarEditor;
+
+  constructor() {}
 }
 
 
@@ -74,4 +95,7 @@ export type Actions =
   | AddCarFailed
   | EditCar
   | EditCarSuccess
-  | EditCarFailed;
+  | EditCarFailed
+  | DisplayCarEditor
+  | CarEditorDisplayed
+  | RemoveCarEditor;

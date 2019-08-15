@@ -7,14 +7,15 @@ import { catchError, map, switchMap, mergeMap } from 'rxjs/operators';
 import { CarService } from '@core/services/car.service';
 import { of } from 'rxjs';
 @Injectable()
-export class AddCarEffects {
+export class EditCarEffects {
 
   @Effect({ dispatch: true })
   EditCar$ = this.actions$
     .pipe(
       ofType(fromCarActions.ActionTypes.EditCar),
       switchMap((data) =>  this.carService.editCar(data)),
-      map((car => new fromCarActions.EditCarSuccess(car)))
+      map((() => new fromCarActions.LoadCars())),
+      catchError(error => of( new fromCarActions.EditCarFailed(error)))
     );
 
   constructor(

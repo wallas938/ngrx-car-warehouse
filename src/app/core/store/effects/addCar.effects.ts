@@ -15,7 +15,8 @@ export class AddCarEffects {
     .pipe(
       ofType(fromCarActions.ActionTypes.AddCar),
       switchMap((car) =>  this.carService.addCar(car)),
-      map((car => new fromCarActions.AddCarSuccess(car)))
+      map((car => new fromCarActions.AddCarSuccess(car))),
+      catchError(error => of(new fromCarActions.AddCarFailed(error)))
     );
 
   constructor(

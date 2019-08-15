@@ -29,6 +29,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material';
+import { StoreModule } from '@ngrx/store';
 /***** end Angular material components end *****/
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import {MatNativeDateModule} from '@angular/material';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    StoreModule.forRoot({}),/*runtimeChecks: { strictStateImmutability: true, strictZctionImmutability: true}} */
     MatButtonModule,
     MatTableModule,
     MatIconModule,

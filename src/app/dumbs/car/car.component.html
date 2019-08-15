@@ -55,7 +55,7 @@
       <ng-container matColumnDef="actions">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell class="actions" *matCellDef="let car">
-              <mat-icon id="edit" (click)="displayFormEditer(car.id, car)">
+              <mat-icon id="edit" (click)="onDisplayCarEditor(car)">
                 edit
               </mat-icon>
                 <mat-icon id="del">

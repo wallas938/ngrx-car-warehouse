@@ -22,7 +22,8 @@ export class CarService {
     )
   }
 
-  editCar(data: any): Observable<Car>  {
-    return this.http.put<Car>(this.baseUrl+data.id, data.car)
+  editCar(editedCarData: any): Observable<Car>  {
+    console.log(editedCarData.car)
+    return this.http.put<Car>(this.baseUrl+editedCarData.car.id, editedCarData.car)
   }
 }

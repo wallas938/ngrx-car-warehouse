@@ -1,4 +1,4 @@
-<form id="edit-form-container"  [formGroup]="newCarForm" (ngSubmit)="onSubmit()">
+<form id="edit-form-container"  [formGroup]="editCarForm" (ngSubmit)="onSubmit()">
     <mat-form-field color="warn">
       <input matInput placeholder="Name" formControlName="name">
     </mat-form-field>
@@ -30,13 +30,17 @@
         <mat-icon matSuffix>euro</mat-icon>
       </mat-form-field>
       <mat-form-field color="warn" class="sales">
-        <input matInput [matDatepicker]="startOfSales" placeholder="Start of Sales" [min]="minDate" [max]="maxDate" formControlName="startOfSales">
+        <input  matInput [matDatepicker]="startOfSales"
+                  placeholder="Start of Sales"
+                   formControlName="startOfSales">
         <mat-datepicker-toggle [for]="startOfSales" matSuffix></mat-datepicker-toggle>
         <mat-datepicker #startOfSales></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field color="warn" class="sales">
-          <input matInput [matDatepicker]="endOfSales" placeholder="End of Sales" [min]="minDate" [max]="maxDate" formControlName="endOfSales">
+          <input  matInput [matDatepicker]="endOfSales"
+                    placeholder="End of Sales"
+                    formControlName="endOfSales">
           <mat-datepicker-toggle [for]="endOfSales" matSuffix></mat-datepicker-toggle>
           <mat-datepicker #endOfSales></mat-datepicker>
         </mat-form-field>
@@ -44,14 +48,13 @@
     <button  class="btn-valider"
                 type="submit"
                 mat-raised-button
-                [disabled]="newCarForm.invalid"
-                [ngStyle]="{ 'background-color' : newCarForm.invalid ?  'grey' : '#f4c812'}">
+                [disabled]="editCarForm.invalid"
+                [ngStyle]="{ 'background-color' : editCarForm.invalid ?  'grey' : '#f4c812'}">
                 EDIT CAR
     </button>
     <button  class="btn-cancel"
                 (click)="onCancel()"
                 mat-raised-button
-                [disabled]="newCarForm.invalid"
                 [ngStyle]="{ 'background-color' : '#d0021b', 'color': 'white'}">
                 CANCEL
     </button>

@@ -1,6 +1,6 @@
 import { Car } from '@core/models/car';
 import { AddCar } from './../../core/store/actions/car.actions';
-import { State } from './../../core/store/index';
+import { GlobalCarState } from './../../core/store/index';
 import { Store } from '@ngrx/store';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {  Router } from '@angular/router'
@@ -13,7 +13,7 @@ import {  Router } from '@angular/router'
 export class NewCarComponent implements OnInit {
 
   constructor(private router: Router,
-                  private store: Store<State>) { }
+                  private store: Store<GlobalCarState>) { }
 
   ngOnInit() {
   }

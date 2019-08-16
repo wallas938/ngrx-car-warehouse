@@ -58,7 +58,7 @@
               <mat-icon id="edit" (click)="onDisplayCarEditor(car)">
                 edit
               </mat-icon>
-                <mat-icon id="del">
+                <mat-icon id="del" (click)="removeHandler(car.id)">
                   delete_sweep
                 </mat-icon>
         </mat-cell>

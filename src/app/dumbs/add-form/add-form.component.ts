@@ -35,8 +35,8 @@ export class AddFormComponent implements OnInit {
 
   onSubmit() {
     let newdCarData = {...this.newCarForm.value,
-      startOfSales: this.newCarForm.value.startOfSales.toLocaleDateString(),
-      endOfSales: this.newCarForm.value.endOfSales.toLocaleDateString(),
+      startOfSales: this.newCarForm.value.startOfSales.toLocaleDateString("en-US",  {month: "2-digit", day: "2-digit", year: "numeric"}),
+      endOfSales: this.newCarForm.value.endOfSales.toLocaleDateString("en-US", {month: "2-digit", day: "2-digit", year: "numeric"}),
     }
     this.onAdd.emit(newdCarData)
   }

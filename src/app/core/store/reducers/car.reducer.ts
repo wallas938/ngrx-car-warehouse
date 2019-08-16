@@ -25,7 +25,7 @@ export function reducer(
 ): CarState {
   switch (action.type) {
     case fromCarActions.ActionTypes.LoadCars:
-      console.log('LOAD')
+      //console.log('LOAD')
       return {
         ...state,
         carsLoading: true,
@@ -33,7 +33,7 @@ export function reducer(
       };
 
     case fromCarActions.ActionTypes.LoadCarsSuccess:
-        console.log('LOADED: ', action)
+        console.log('LOADED: ', action.cars)
       return {
         ...state,
         list: action.cars,
@@ -49,13 +49,13 @@ export function reducer(
         isCarsLoaded: false
       };
       case fromCarActions.ActionTypes.AddCar:
-      console.log('CAR ADDING')
+      console.log('CAR ADDING: ', action.car)
       return {
         ...state,
       };
 
     case fromCarActions.ActionTypes.AddCarSuccess:
-      console.log('CAR ADDED: ')
+      console.log('CAR ADDED: ', action.car)
       return {
         ...state,
       };
@@ -67,7 +67,7 @@ export function reducer(
       };
 
       case fromCarActions.ActionTypes.DisplayCarEditor:
-      //console.log('CAR EDITOR SHOWED WITH OLD DATAS', action.car)
+      console.log('CAR EDITOR SHOWED WITH OLD DATAS', action.car)
       return {
         ...state,
         currentEditedCar: action.car,
@@ -79,11 +79,12 @@ export function reducer(
       console.log('CAR EDITOR REMOVED ')
       return {
         ...state,
+        currentEditedCar: undefined,
         carEditing: false,
       };
 
       case fromCarActions.ActionTypes.EditCar:
-      console.log('NEW DATAS SENT', action)
+      console.log('NEW DATAS SENT', action.car)
       return {
         ...state,
         carEditing: false,
@@ -100,6 +101,30 @@ export function reducer(
 
       case fromCarActions.ActionTypes.EditCarFailed:
         console.log('EDITING CAR FAILED: ', action.error)
+      return {
+        ...state,
+        carEditing: false,
+        carEdited: false
+      };
+
+      case fromCarActions.ActionTypes.RemoveCar:
+      console.log('DELETING CAR', action)
+      return {
+        ...state,
+        carEditing: false,
+        carEdited: false
+      };
+
+    case fromCarActions.ActionTypes.RemoveCarSuccess:
+      console.log('CAR REMOVED !', action)
+      return {
+        ...state,
+        carEditing: false,
+        carEdited: true
+      };
+
+      case fromCarActions.ActionTypes.RemoveCarFailed:
+        console.log('DELETING CAR FAILED: ', action)
       return {
         ...state,
         carEditing: false,

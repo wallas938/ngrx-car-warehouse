@@ -30,6 +30,12 @@ export class EditFormComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngOnChanges(changes: any): void {
+    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+    //Add '${implements OnChanges}' to the class.
+    console.log('ngOnChanges called !!')
     this.editCarForm.controls['name'].setValue(this.oldCarData.name)
     this.editCarForm.controls['horsePower'].setValue(this.oldCarData.horsePower)
     this.editCarForm.controls['brand'].setValue(this.oldCarData.brand)
@@ -45,7 +51,12 @@ export class EditFormComponent implements OnInit {
   }
 
   onSubmit() {
-    const carEdited = {...this.editCarForm.value, id: this.oldCarData.id}
+    const carEdited =   {  ...this.editCarForm.value, 
+                                id: this.oldCarData.id,
+                                startOfSales: this.editCarForm.value.startOfSales.toLocaleDateString("en-US", {month: "2-digit", day: "2-digit", year: "numeric"}),
+                                endOfSales: this.editCarForm.value.endOfSales.toLocaleDateString("en-US",  {month: "2-digit", day: "2-digit", year: "numeric"}),
+                              }
+
     this.editCar.emit(carEdited)
   }
 

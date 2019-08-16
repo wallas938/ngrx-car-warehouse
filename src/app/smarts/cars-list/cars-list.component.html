@@ -1,6 +1,8 @@
 <div  *ngIf="isCarsLoaded$; else loading"  class="car-list-container">
   <div class="car-list">
-    <car (displayCarEditor)="showCarEditor($event)" [cars]="cars$ | async"></car>
+    <car (displayCarEditor)="showCarEditor($event)" 
+          (carRemove)="onRemove($event)"
+          [cars]="cars$ | async"></car>
   </div>
 
   <edit-car *ngIf="oneCarEditing$ | async">

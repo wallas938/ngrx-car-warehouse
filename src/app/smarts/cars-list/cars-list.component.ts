@@ -35,10 +35,14 @@ export class CarsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(new fromCarActions.LoadCars())
-    console.log(this.cars$)
   }
 
   showCarEditor(car: Car) {
+    this.store.dispatch(new fromCarActions.RemoveCarEditor())
     this.store.dispatch(new fromCarActions.DisplayCarEditor(car))
+  }
+
+  onRemove(id: number) {
+    this.store.dispatch(new fromCarActions.RemoveCar(id))
   }
 }

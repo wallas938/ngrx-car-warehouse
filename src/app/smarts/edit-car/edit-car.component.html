@@ -1,4 +1,4 @@
-<edit-form  [oldCarData]="oldCarData$ | async"
+<edit-form  [oldCarData]="(oldCarData$ | async)"
                 (editCar)="onEditCar($event)"
                 (removeCarEditor)="onRemoveCarEditor($event)">
 </edit-form>

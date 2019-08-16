@@ -30,6 +30,7 @@ export class EditCarComponent implements OnInit {
 
   onEditCar(carEdited: Car) {
     this.store.dispatch(new fromCarActions.EditCar(carEdited))
+    this.store.dispatch(new RemoveCarEditor())
 
   }
 

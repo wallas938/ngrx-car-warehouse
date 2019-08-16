@@ -26,4 +26,8 @@ export class CarService {
     console.log(editedCarData.car)
     return this.http.put<Car>(this.baseUrl+editedCarData.car.id, editedCarData.car)
   }
+
+  removeCar(carToRemove: any): Observable<Car> {
+    return this.http.delete<Car>(this.baseUrl+carToRemove.id)
+  }
 }

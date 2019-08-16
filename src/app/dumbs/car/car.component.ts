@@ -14,6 +14,7 @@ export class CarComponent implements OnInit {
   @Input() cars: Car[]
   @Output() displayCarEditor = new  EventEmitter()
   @Output() removeCarEditor = new  EventEmitter()
+  @Output() carRemove = new  EventEmitter()
 
   displayedColumns: string[] = ['name', 'brand', 'fuelType', 'horsePower', 'price', 'startOfSales', 'endOfSales', 'actions'];
   constructor() {}
@@ -24,6 +25,10 @@ export class CarComponent implements OnInit {
 
   onDisplayCarEditor(car: Car) {
       this.displayCarEditor.emit(car)
+  }
+
+  removeHandler(id: number) {
+    this.carRemove.emit(id)
   }
 
 }

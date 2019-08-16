@@ -5,15 +5,19 @@ export enum ActionTypes {
   LoadCars = '[Cars] Get cars from API',
   LoadCarsSuccess = '[Cars] Get cars from API Success',
   LoadCarsFailed = '[Cars] Get cars from API Failed',
-  AddCar = '[Cars] Add a new car',
-  AddCarSuccess = '[Cars] Add a new car Success',
-  AddCarFailed = '[Cars] Add a new car Failed',
-  EditCar = '[Cars] Edit one car',
-  EditCarSuccess = '[Cars] Edit one car Success',
-  EditCarFailed = '[Cars] Edit one car Failed',
+  AddCar = '[Cars] Add a new car into Server',
+  AddCarSuccess = '[Cars] Add a new car into Server Success',
+  AddCarFailed = '[Cars] Add a new car into Server Failed',
+  EditCar = '[Cars] Edit one car in Server',
+  EditCarSuccess = '[Cars] Edit one car in Server Success',
+  EditCarFailed = '[Cars] Edit one car in Server Failed',
+  RemoveCar = '[Cars] Remove one car from Api',
+  RemoveCarSuccess = '[Cars] Remove one car from Api Success',
+  RemoveCarFailed = '[Cars] Remove one car from Api Failed',
   DisplayCarEditor = '[Cars] Display form Editor',
-  CarEditorDisplayed = '[Cars] Form Editor Displayed',
+  CarEditorDisplayed = '[Cars] Form Editor Displayed', // never used
   RemoveCarEditor = '[Cars] Form Editor Removed',
+
 }
 
 export class LoadCars implements Action {
@@ -84,6 +88,24 @@ export class RemoveCarEditor implements Action {
   constructor() {}
 }
 
+export class RemoveCar implements Action {
+  readonly type = ActionTypes.RemoveCar
+
+  constructor(public id: number) {}
+}
+
+export class RemoveCarSuccess implements Action {
+  readonly type = ActionTypes.RemoveCarSuccess
+
+  constructor() {}
+}
+
+export class RemoveCarFailed implements Action {
+  readonly type = ActionTypes.RemoveCarFailed
+
+  constructor() {}
+}
+
 
 
 export type Actions =
@@ -98,4 +120,7 @@ export type Actions =
   | EditCarFailed
   | DisplayCarEditor
   | CarEditorDisplayed
-  | RemoveCarEditor;
+  | RemoveCarEditor
+  | RemoveCar
+  | RemoveCarSuccess
+  | RemoveCarFailed;

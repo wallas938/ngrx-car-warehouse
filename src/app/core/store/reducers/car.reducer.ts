@@ -42,7 +42,7 @@ export function reducer(
       };
 
       case fromCarActions.ActionTypes.LoadCarsFailed:
-        //console.log('LOOADING FAILED: ', action)
+        console.log('LOOADING FAILED: ', action.error)
       return {
         ...state,
         carsLoading: false,
@@ -61,7 +61,7 @@ export function reducer(
       };
 
       case fromCarActions.ActionTypes.AddCarFailed:
-        //console.log('ADDING CAR FAILED: ', action)
+        console.log('ADDING CAR FAILED: ', action.error)
       return {
         ...state,
       };

@@ -35,6 +35,7 @@ export class AddFormComponent implements OnInit {
 
   onSubmit() {
     let newdCarData = {...this.newCarForm.value,
+      id: Math.floor(Math.random() * 10000000000000),
       startOfSales: this.newCarForm.value.startOfSales.toLocaleDateString("en-US",  {month: "2-digit", day: "2-digit", year: "numeric"}),
       endOfSales: this.newCarForm.value.endOfSales.toLocaleDateString("en-US", {month: "2-digit", day: "2-digit", year: "numeric"}),
     }

@@ -17,9 +17,7 @@ export class CarService {
   }
 
   addCar(car: any): Observable<Car>  {
-    return this.http.post<Car>(this.baseUrl, car.car).pipe(
-      map((car) => car)
-    )
+    return this.http.post<Car>(this.baseUrl, car.car)
   }
 
   editCar(editedCarData: any): Observable<Car>  {

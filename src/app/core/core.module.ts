@@ -18,11 +18,7 @@ import * as fromEffects from './store/effects/index'
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryCarService),
     StoreModule.forFeature("GlobalCarState", fromCore.reducers),
-    EffectsModule.forRoot([fromEffects.addCarEffects, fromEffects.carEffects, fromEffects.editCarEffects, fromEffects.removeCarEffects]),
-    StoreDevtoolsModule.instrument({
-      name: 'Simplon Exercise',
-      maxAge: 50
-    }),
+    EffectsModule.forFeature([fromEffects.addCarEffects, fromEffects.carEffects, fromEffects.editCarEffects, fromEffects.removeCarEffects]),
   ],
   providers: [
     CarService

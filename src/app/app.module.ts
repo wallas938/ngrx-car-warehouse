@@ -9,6 +9,8 @@ import { CoreModule } from '@core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import * as fromCore from '@core/store';
+import * as fromEffects from './core/store/effects/index'
 
 /***** start Angular components start *****/
 import { CarsListComponent } from './smarts/cars-list/cars-list.component';
@@ -30,6 +32,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 /***** end Angular material components end *****/
 @NgModule({
   declarations: [
@@ -48,7 +51,12 @@ import { StoreModule } from '@ngrx/store';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({}),/*runtimeChecks: { strictStateImmutability: true, strictZctionImmutability: true}} */
+    StoreModule.forRoot(fromCore.reducers, { runtimeChecks: { strictStateImmutability: true, strictActionImmutability: true }}), //fromCore.reducers, { runtimeChecks: { strictStateImmutability: true, strictActionImmutability: true }})
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({
+      name: 'Simplon Exercise',
+      maxAge: 50
+    }),
     MatButtonModule,
     MatTableModule,
     MatIconModule,
